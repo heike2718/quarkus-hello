@@ -12,4 +12,4 @@ VOLUME /usr/local/bin/quarkus-hello/config
 
 EXPOSE 9000
 
-CMD ["java","-jar","app.jar"]
+CMD ["java","-jar","-Dquarkus.datasource.password=hwinkel","app.jar"]
