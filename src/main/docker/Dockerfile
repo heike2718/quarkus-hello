@@ -7,7 +7,7 @@ WORKDIR /usr/local/bin/quarkus-hello
 COPY *-runner.jar ./app.jar
 COPY lib ./lib
 
-# mount as /home/drpwzrd/docker-volumes/checklisten
+# mount as /home/drpwzrd/docker-volumes/quarkus-hello-server
 VOLUME /usr/local/bin/quarkus-hello/config
 
 EXPOSE 9000
