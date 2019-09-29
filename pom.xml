@@ -80,7 +80,6 @@
 				<version>5.0.0-M3</version>
 				<executions>
 					<execution>
-						<phase>package</phase>
 						<goals>
 							<goal>check</goal>
 						</goals>

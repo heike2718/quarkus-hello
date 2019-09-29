@@ -6,7 +6,7 @@ spielprojekt zum lernen
 
 docker image build -t heik2718/quarkus-hello .
 
-docker image build -t heik2718/quarkustest-mariadb .
+docker image build -t heik2718/minikaenguru-mariadb .
 
 ## start db-container
 
@@ -14,4 +14,8 @@ this ist secret
 
 ## connect to db-container
 
-docker container exec -it minikaenguru_quarkustest-database_1 bash
+docker container exec -it minikaenguru_minikaenguru-database_1 bash
+
+## tail the log
+
+docker logs -f minikaenguru_quarkus-hello_1
