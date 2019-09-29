@@ -1,5 +1,6 @@
 package de.egladil.web.quarkus_hello;
 
+import javax.annotation.security.PermitAll;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -15,12 +16,13 @@ import de.egladil.web.quarkus_hello.domain.Teilnehmerstatistik;
 
 @ApplicationScoped
 @Path("/hello")
+@PermitAll
 public class Hello {
 
 	@Inject
 	NativeSqlDao dao;
 
-	@ConfigProperty(name = "quarkus-hello.version")
+	@ConfigProperty(name = "quarkus.application.version")
 	String version;
 
 	@GET
