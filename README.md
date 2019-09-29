@@ -19,3 +19,10 @@ docker container exec -it minikaenguru_minikaenguru-database_1 bash
 ## tail the log
 
 docker logs -f minikaenguru_quarkus-hello_1
+
+## URLs
+
+[Hello World](https://mathe-jung-alt.de/quarkus-hello/hello/world)
+
+[Statistics](https://mathe-jung-alt.de/quarkus-hello/hello/statistics)
+

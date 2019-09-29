@@ -28,7 +28,7 @@ public class Hello {
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response hello() {
 
-		return Response.ok("Hello this is quarkus-hello Version " + version).build();
+		return Response.ok("This is quarkus-hello Version " + version).build();
 	}
 
 	@GET

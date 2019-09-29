@@ -18,7 +18,7 @@ public class HelloTest {
 			.then()
 			.statusCode(200)
 			.body(is(
-				"Hello this is quarkus-hello Version 0.0.1"));
+				"This is quarkus-hello Version 1.0.0"));
 	}
 
 	@Test
