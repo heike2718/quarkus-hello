@@ -26,3 +26,5 @@ docker logs -f minikaenguru_quarkus-hello_1
 
 [Statistics](https://mathe-jung-alt.de/quarkus-hello/hello/statistics)
 
+[Secret](https://mathe-jung-alt.de/quarkus-hello/secret)
+
