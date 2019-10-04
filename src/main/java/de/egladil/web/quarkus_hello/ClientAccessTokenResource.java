@@ -14,6 +14,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -22,6 +23,7 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.slf4j.Logger;
 
 import de.egladil.web.quarkus_hello.exception.AuthException;
+import de.egladil.web.quarkus_hello.exception.RuntimeExceptionDecorator;
 import de.egladil.web.quarkus_hello.payload.OAuthClientCredentials;
 import de.egladil.web.quarkus_hello.restclient.InitAccessTokenService;
 import de.egladil.web.quarkus_hello.utils.LogmessagePrefixes;
@@ -57,11 +59,17 @@ public class ClientAccessTokenResource {
 
 		OAuthClientCredentials credentials = OAuthClientCredentials.create(clientId, clientSecret, nonce);
 
-		JsonObject auhtResponse = initAccessTokenService.authenticateClient(credentials);
+		try {
 
-		Response response = evaluateResponse(nonce, auhtResponse);
+			JsonObject auhtResponse = initAccessTokenService.authenticateClient(credentials);
 
-		return response;
+			Response response = evaluateResponse(nonce, auhtResponse);
+
+			return response;
+		} catch (WebApplicationException e) {
+
+			throw new RuntimeExceptionDecorator(e.getMessage(), e);
+		}
 
 	}
 

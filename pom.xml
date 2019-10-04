@@ -94,6 +94,7 @@
 				<version>5.0.0-M3</version>
 				<executions>
 					<execution>
+					    <phase>package</phase>
 						<goals>
 							<goal>check</goal>
 						</goals>
@@ -105,8 +106,6 @@
 				<groupId>io.quarkus</groupId>
 				<artifactId>quarkus-maven-plugin</artifactId>
 				<version>${quarkus.version}</version>
-				<!-- <configuration> <uberJar>true</uberJar> <finalName>${artifactId}</finalName>
-					</configuration> -->
 				<executions>
 					<execution>
 						<goals>
