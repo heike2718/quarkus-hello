@@ -1,6 +1,9 @@
 # quarkus-hello
 spielprojekt zum lernen
 
+## current version
+1.3.0
+
 
 ## docker image bauen
 
@@ -24,7 +27,6 @@ docker logs -f minikaenguru_quarkus-hello_1
 
 [Hello World](https://mathe-jung-alt.de/quarkus-hello/hello/world)
 
-[Statistics](https://mathe-jung-alt.de/quarkus-hello/hello/statistics)
+[Statistics](https://mathe-jung-alt.de/quarkus-hello/statistics)
 
 [Secret](https://mathe-jung-alt.de/quarkus-hello/secret)
-
