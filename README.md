@@ -2,7 +2,7 @@
 spielprojekt zum lernen
 
 ## current version
-1.3.0
+1.4.0
 
 
 ## docker image bauen
@@ -30,3 +30,9 @@ docker logs -f minikaenguru_quarkus-hello_1
 [Statistics](https://mathe-jung-alt.de/quarkus-hello/statistics)
 
 [Secret](https://mathe-jung-alt.de/quarkus-hello/secret)
+
+[JWT-Protected](https://mathe-jung-alt.de/quarkus-hello/secured/admins)
+
+[public all users](https://mathe-jung-alt.de/quarkus-hello/secured/public)
+
+[send testmail](https://mathe-jung-alt.de/quarkus-hello/mail)
