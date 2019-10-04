@@ -2,7 +2,6 @@ package de.egladil.web.quarkus_hello;
 
 import javax.annotation.security.PermitAll;
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -11,16 +10,10 @@ import javax.ws.rs.core.Response;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
-import de.egladil.web.quarkus_hello.dao.NativeSqlDao;
-import de.egladil.web.quarkus_hello.domain.Teilnehmerstatistik;
-
 @ApplicationScoped
 @Path("/hello")
 @PermitAll
 public class Hello {
-
-	@Inject
-	NativeSqlDao dao;
 
 	@ConfigProperty(name = "quarkus.application.version")
 	String version;
@@ -31,16 +24,6 @@ public class Hello {
 	public Response hello() {
 
 		return Response.ok("This is quarkus-hello Version " + version).build();
-	}
-
-	@GET
-	@Path("/statistics")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response getStatistics() {
-
-		Teilnehmerstatistik result = dao.getStatistik();
-
-		return Response.ok().entity(result).build();
 	}
 
 }
