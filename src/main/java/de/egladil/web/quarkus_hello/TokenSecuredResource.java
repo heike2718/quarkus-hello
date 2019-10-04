@@ -31,7 +31,7 @@ public class TokenSecuredResource {
 	JsonWebToken jwt;
 
 	@GET
-	@Path("public")
+	@Path("/public")
 	@PermitAll
 	@Produces(MediaType.TEXT_PLAIN)
 	public String hello(@Context final SecurityContext ctx) {
@@ -46,7 +46,7 @@ public class TokenSecuredResource {
 	}
 
 	@GET
-	@Path("admins")
+	@Path("/admins")
 	@RolesAllowed({ "ADMIN" })
 	@Produces(MediaType.TEXT_PLAIN)
 	public String helloRolesAllowed(@Context final SecurityContext ctx) {
