@@ -7,6 +7,7 @@ package de.egladil.web.quarkus_hello.exception;
 import java.net.ConnectException;
 
 import javax.inject.Inject;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
@@ -25,15 +26,16 @@ public class GlobalExceptionHandler implements ExceptionMapper<Throwable> {
 	@Override
 	public Response toResponse(final Throwable exception) {
 
-		Throwable theRealException = exception;
+		log.info("caught this exception: {}", exception.getClass().getName());
 
-		if (exception instanceof RuntimeExceptionDecorator) {
+		if (exception.getCause() != null) {
 
-			theRealException = exception.getCause();
-
+			log.info("the wrapped exception is: {}", exception.getCause().getClass().getName());
 		}
 
-		if (exception instanceof RuntimeException && exception.getCause() != null) {
+		Throwable theRealException = exception;
+
+		if (exception.getCause() != null) {
 
 			theRealException = exception.getCause();
 		}
@@ -48,8 +50,13 @@ public class GlobalExceptionHandler implements ExceptionMapper<Throwable> {
 			return Response.status(502).entity("Der authprovider ist nicht erreichbar").build();
 		}
 
+		if (exception instanceof NotFoundException) {
+
+			return Response.status(404).entity("Diese URL kennen wir nicht (HEX)").build();
+		}
+
 		log.error(exception.getMessage(), exception);
-		return Response.serverError().entity("Da ist wohl irgend etwas schiefgelaufen").build();
+		return Response.serverError().entity("OMG!!! Da ist wohl irgend etwas schiefgelaufen :/").build();
 
 	}
 
