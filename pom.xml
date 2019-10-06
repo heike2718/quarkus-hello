@@ -27,6 +27,20 @@
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
+
+		<dependency>
+			<groupId>de.egladil.web</groupId>
+			<artifactId>commons-validation</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>de.egladil.web</groupId>
+			<artifactId>commons-mailer</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+
+		<!-- Quarkus START -->
 		<dependency>
 			<groupId>io.quarkus</groupId>
 			<artifactId>quarkus-hibernate-orm</artifactId>
@@ -45,24 +59,13 @@
 		</dependency>
 		<dependency>
 			<groupId>io.quarkus</groupId>
-			<artifactId>quarkus-resteasy-jsonb</artifactId>
+			<artifactId>quarkus-resteasy-jackson</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>io.quarkus</groupId>
 			<artifactId>quarkus-smallrye-jwt</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>de.egladil.web</groupId>
-			<artifactId>commons-validation</artifactId>
-			<version>0.0.1</version>
-		</dependency>
-
-		<dependency>
-			<groupId>de.egladil.web</groupId>
-			<artifactId>commons-mailer</artifactId>
-			<version>1.0.0</version>
-		</dependency>
+		<!-- Quarkus END -->
 
 		<dependency>
 			<groupId>org.mariadb.jdbc</groupId>
@@ -100,7 +103,7 @@
 				<version>5.0.0-M3</version>
 				<executions>
 					<execution>
-					    <phase>package</phase>
+						<phase>package</phase>
 						<goals>
 							<goal>check</goal>
 						</goals>

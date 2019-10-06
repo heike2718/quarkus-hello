@@ -54,7 +54,7 @@ public class MailResource {
 
 		if (!expectedQueryParam.equals(queryParam)) {
 
-			log.error("invalid Path: excpected '{}' but was '{}'", expectedQueryParam, queryParam);
+			log.error("invalid query parameter: excpected '{}' but was '{}'", expectedQueryParam, queryParam);
 
 			return Response.status(403).entity("Das hat mangels Wissen nicht geklappt").build();
 		}
