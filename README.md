@@ -2,7 +2,8 @@
 spielprojekt zum lernen
 
 ## current version
-1.4.0
+
+* __1.4.1__ switched from jsonb to jackson-databind, newer versions of my commos-libs
 
 
 ## docker image bauen
