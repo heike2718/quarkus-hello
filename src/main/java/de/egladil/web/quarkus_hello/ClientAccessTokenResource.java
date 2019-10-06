@@ -22,9 +22,9 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.slf4j.Logger;
 
+import de.egladil.web.commons_validation.payload.OAuthClientCredentials;
 import de.egladil.web.quarkus_hello.exception.AuthException;
 import de.egladil.web.quarkus_hello.exception.RuntimeExceptionDecorator;
-import de.egladil.web.quarkus_hello.payload.OAuthClientCredentials;
 import de.egladil.web.quarkus_hello.restclient.InitAccessTokenService;
 import de.egladil.web.quarkus_hello.utils.LogmessagePrefixes;
 
