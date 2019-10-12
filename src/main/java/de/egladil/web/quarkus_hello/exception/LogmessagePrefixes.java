@@ -2,7 +2,7 @@
 // Project: quarkus-hello
 // (c) Heike Winkelvoß
 // =====================================================
-package de.egladil.web.quarkus_hello.utils;
+package de.egladil.web.quarkus_hello.exception;
 
 /**
  * LogmessagePrefixes
