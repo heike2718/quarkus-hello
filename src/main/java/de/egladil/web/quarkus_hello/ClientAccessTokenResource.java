@@ -24,9 +24,9 @@ import org.slf4j.Logger;
 
 import de.egladil.web.commons_validation.payload.OAuthClientCredentials;
 import de.egladil.web.quarkus_hello.exception.AuthException;
+import de.egladil.web.quarkus_hello.exception.LogmessagePrefixes;
 import de.egladil.web.quarkus_hello.exception.RuntimeExceptionDecorator;
 import de.egladil.web.quarkus_hello.restclient.InitAccessTokenService;
-import de.egladil.web.quarkus_hello.utils.LogmessagePrefixes;
 
 /**
  * ClientAccessTokenResource
