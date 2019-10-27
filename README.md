@@ -3,6 +3,8 @@ spielprojekt zum lernen
 
 ## current version
 
+* __1.5.0__ upgrade to quarkus-0.26.1
+
 * __1.4.2__ CDI fixed. no producers for dependent CDI-Beans
 
 * __1.4.1__ switched from jsonb to jackson-databind, newer versions of my commos-libs
