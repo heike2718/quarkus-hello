@@ -11,7 +11,10 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import de.egladil.web.quarkus_hello.dao.NativeSqlDao;
 import de.egladil.web.quarkus_hello.domain.Teilnehmerstatistik;
@@ -24,6 +27,9 @@ import de.egladil.web.quarkus_hello.domain.Teilnehmerstatistik;
 @PermitAll
 public class StatisticsResource {
 
+	@ConfigProperty(name = "secure.cookie")
+	boolean secureCookie;
+
 	@Inject
 	NativeSqlDao dao;
 
@@ -33,7 +39,20 @@ public class StatisticsResource {
 
 		Teilnehmerstatistik result = dao.getStatistik();
 
-		return Response.ok().entity(result).build();
+		// NewCookie cookie = new NewCookie("Herbert", "Herr Bert");
+		// @formatter:off
+		NewCookie cookie = new NewCookie("Herbert",
+			"Her Bert",
+			null,
+			null,
+			1,
+			null,
+			7200,
+			null,
+			secureCookie,  // nur in dev!!!
+			true);
+//		 @formatter:on
+		return Response.ok().entity(result).cookie(cookie).build();
 	}
 
 }
