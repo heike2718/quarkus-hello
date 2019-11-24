@@ -42,7 +42,7 @@ public class StatisticsResource {
 		// NewCookie cookie = new NewCookie("Herbert", "Herr Bert");
 		// @formatter:off
 		NewCookie cookie = new NewCookie("Herbert",
-			"Her Bert",
+			"Herr Bert",
 			null,
 			null,
 			1,
