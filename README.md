@@ -3,11 +3,18 @@ spielprojekt zum lernen
 
 ## current version
 
-* __1.5.0__ upgrade to quarkus-0.26.1
+__1.5.1__
 
-* __1.4.2__ CDI fixed. no producers for dependent CDI-Beans
+* upgrade to quarkus-1.0.0.CR2
+* Cookies-Showcase
+* changed authprovider- ClientAccessToken-API
 
-* __1.4.1__ switched from jsonb to jackson-databind, newer versions of my commos-libs
+
+__1.5.0__ upgrade to quarkus-0.26.1
+
+__1.4.2__ CDI fixed. no producers for dependent CDI-Beans
+
+__1.4.1__ switched from jsonb to jackson-databind, newer versions of my commos-libs
 
 
 ## docker image bauen
@@ -30,7 +37,9 @@ docker logs -f minikaenguru_quarkus-hello_1
 
 ## URLs
 
-[Hello World](https://mathe-jung-alt.de/quarkus-hello/hello/world)
+[Hello World](https://mathe-jung-alt.de/quarkus-hello/hello/world) setzt jetz ein Session-Cookie
+
+[Bye World](https://mathe-jung-alt.de/quarkus-hello/hello/bye) löscht das Session-Cookie
 
 [Statistics](https://mathe-jung-alt.de/quarkus-hello/statistics)
 

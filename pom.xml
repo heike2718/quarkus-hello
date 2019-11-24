@@ -6,7 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.egladil.web</groupId>
 	<artifactId>quarkus-hello</artifactId>
-	<version>1.5.1-SNAPSHOT</version>
+	<version>1.5.1</version>
 	<properties>
 		<surefire-plugin.version>2.22.0</surefire-plugin.version>
 		<quarkus.version>1.0.0.CR2</quarkus.version>
