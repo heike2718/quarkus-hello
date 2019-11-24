@@ -4,12 +4,12 @@
 // =====================================================
 package de.egladil.web.quarkus_hello;
 
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.security.PermitAll;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.json.JsonObject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -22,7 +22,9 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.slf4j.Logger;
 
+import de.egladil.web.commons_validation.payload.MessagePayload;
 import de.egladil.web.commons_validation.payload.OAuthClientCredentials;
+import de.egladil.web.commons_validation.payload.ResponsePayload;
 import de.egladil.web.quarkus_hello.exception.AuthException;
 import de.egladil.web.quarkus_hello.exception.LogmessagePrefixes;
 import de.egladil.web.quarkus_hello.exception.RuntimeExceptionDecorator;
@@ -61,11 +63,13 @@ public class ClientAccessTokenResource {
 
 		try {
 
-			JsonObject auhtResponse = initAccessTokenService.authenticateClient(credentials);
+			Response authResponse = initAccessTokenService.authenticateClient(credentials);
 
-			Response response = evaluateResponse(nonce, auhtResponse);
+			ResponsePayload responsePayload = authResponse.readEntity(ResponsePayload.class);
 
-			return response;
+			String accessToken = evaluateResponse(nonce, responsePayload);
+
+			return Response.ok(new ResponsePayload(responsePayload.getMessage(), accessToken)).build();
 		} catch (WebApplicationException e) {
 
 			throw new RuntimeExceptionDecorator(e.getMessage(), e);
@@ -73,23 +77,30 @@ public class ClientAccessTokenResource {
 
 	}
 
-	private Response evaluateResponse(final String nonce, final JsonObject response) {
+	private String evaluateResponse(final String nonce, final ResponsePayload responsePayload) throws AuthException {
 
-		JsonObject message = response.getJsonObject("message");
-		String level = message.getString("level");
+		MessagePayload messagePayload = responsePayload.getMessage();
 
-		if ("INFO".equals(level)) {
+		if (messagePayload.isOk()) {
 
-			String responseNonce = response.getJsonObject("data").getString("nonce");
+			@SuppressWarnings("unchecked")
+			Map<String, String> dataMap = (Map<String, String>) responsePayload.getData();
+			String responseNonce = dataMap.get("nonce");
 
 			if (!nonce.equals(responseNonce)) {
 
-				log.error(LogmessagePrefixes.BOT + "zurückgesendetes nonce stimmt nicht");
+				log.warn(LogmessagePrefixes.BOT + "zurückgesendetes nonce stimmt nicht");
 				throw new AuthException();
 			}
+			String accessToken = dataMap.get("accessToken");
+
+			return accessToken;
+
+		} else {
+
+			log.error("Authentisierung des Clients hat nicht geklappt: {} - {}", messagePayload.getLevel(),
+				messagePayload.getMessage());
+			throw new AuthException();
 		}
-
-		return Response.ok(response).build();
 	}
-
 }
